@@ -1,5 +1,6 @@
 <template>
     <ProductDetail :product="currentProduct" v-if="currentProduct" />
+    <PopularProducts />
     <AboutBrand />
     <Subscribe />
 </template>
@@ -11,6 +12,7 @@ import api from '@/api.js'
 import ProductDetail from '@/components/ProductDetail.vue';
 import AboutBrand from '@/components/AboutBrand.vue'
 import Subscribe from '@/components/Subscribe.vue'
+import PopularProducts from '@/components/PopularProducts.vue'
 
 
 const route = useRoute();

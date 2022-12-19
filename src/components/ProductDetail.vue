@@ -5,7 +5,7 @@
         </div>
         <div>
             <h2 class="product-name">{{ product.name }}</h2>
-            <span class="product-price">${{ product.price }}</span>
+            <span class="product-price">£{{ product.price }}</span>
             <div class="product-block product-description">
                 <span class="product-block__title">Product description</span>
                 <div v-html="product.description"></div>
@@ -63,6 +63,7 @@ const changeQuantity = (type) => {
     align-items: center;
     grid-template-columns: 1fr 500px;
     column-gap: 65px;
+    margin-bottom: 65px;
     &-name {
         margin: 0 0 16px 0;
         font-family: var(--clash);
