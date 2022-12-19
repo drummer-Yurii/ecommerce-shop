@@ -1,18 +1,25 @@
 <template>
-    ghghfhgf
+    <ProductDetail :product="currentProduct" v-if="currentProduct" />
+    <AboutBrand />
+    <Subscribe />
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import api from '@/api.js'
+import ProductDetail from '@/components/ProductDetail.vue';
+import AboutBrand from '@/components/AboutBrand.vue'
+import Subscribe from '@/components/Subscribe.vue'
 
-const route = useRoute()
-const router = useRouter()
-const productId = ref('')
 
-onMounted(() => {
-    productId.value = route.params.id
-    api.getProduct(productId.value)
+const route = useRoute();
+const router = useRouter();
+const productId = ref('');
+const currentProduct = ref({});
+
+onMounted(async () => {
+    productId.value = route.params.id;
+    currentProduct.value = await api.getProduct(productId.value);
 });
 </script>
