@@ -14,6 +14,9 @@
                 <div class="header-top-right__cart">
                     <router-link to="/cart">
                         <img src="/svg/header-cart.svg" alt="cart">
+                        <span class="header-top-right__count" v-if="cartStore.cart.length">
+                            {{ cartStore.cart.length }}
+                        </span>
                     </router-link>
                 </div>
                 <div class="header-top-right__user">
@@ -43,6 +46,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useCartStore } from '@/store/cart.js';
 const menu = [
     {
         name: 'Plant pots',
@@ -57,7 +61,8 @@ const menu = [
         path: '/tables'
     },
 ]
-const isOpenedMobileMenu = ref(false)
+const isOpenedMobileMenu = ref(false);
+const cartStore = useCartStore()
 </script>
 
 <style lang="scss" scoped>
@@ -113,6 +118,22 @@ const isOpenedMobileMenu = ref(false)
         }
         &__cart {
             margin-right: 16px;
+            position: relative;
+        }
+        &__count {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #000;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 10px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: -50%;
+            bottom: 0;
         }
     }
     }

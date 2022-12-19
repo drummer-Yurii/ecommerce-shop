@@ -27,7 +27,7 @@
                     <span class="product-quantity-symbol" @click="changeQuantity('plus')">+</span>
                 </div>
             </div>
-            <Button color="dark-primary">Add To Cart</Button>
+            <Button color="dark-primary" @click="cartStore.addToCart(product, quantity)">Add To Cart</Button>
         </div>
     </div>
 </template>
@@ -35,8 +35,8 @@
 <script setup>
 import {ref} from 'vue';
 import Button from '@/components/UI/Button.vue'
+import { useCartStore } from '@/store/cart.js';
 
-const quantity = ref(1)
 const props = defineProps({
     product: {
         type: Object,
@@ -44,6 +44,9 @@ const props = defineProps({
         required: true
     }
 });
+
+const quantity = ref(1);
+const cartStore = useCartStore();
 
 const changeQuantity = (type) => {
     if (type === 'minus') {
